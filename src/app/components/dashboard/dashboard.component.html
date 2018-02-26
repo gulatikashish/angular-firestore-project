@@ -1,0 +1,60 @@
+<nav class="navbar navbar-dark justify-content-between">
+  <logo>
+    <a class="navbar-brand" href="#">
+      <i class='fa fa-lock'></i> PRODUCTS</a>
+  </logo>
+  <a class="logout" (click)="logout()" href="javascript:void(0)">Logout</a>
+</nav>
+<br>
+<br>
+<br>
+
+<!-- <change-password></change-password> -->
+
+<div width="50%">
+  <table>
+    <tr>
+      <td>
+        <input type="text" [(ngModel)]="prodname">
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="proddesc">
+      </td>
+      <td>
+        <button (click)="add()">Add</button>
+      </td>
+    </tr>
+  </table>
+
+</div>
+
+<br>
+<br>
+
+
+
+<table>
+  <tr>
+    <th>
+      Product Name
+    </th>
+    <th>
+      Product Description
+    </th>
+    <th>
+      Actions
+    </th>
+  </tr>
+  <tr *ngFor="let product of prodobs | async">
+    <td>
+      <input type="text" [(ngModel)]="product.prodname">
+    </td>
+    <td>
+      <input type="text" [(ngModel)]="product.proddesc">
+    </td>
+    <td>
+      <button (click)="update(product)" class="buttongreen">update</button>
+      <button (click)="delete(product)" class="buttonred">delete</button>
+    </td>
+  </tr>
+</table>

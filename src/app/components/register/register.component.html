@@ -1,0 +1,49 @@
+<div class="modal-dialog cascading-modal" role="document">
+  <!--Content-->
+  <div class="modal-content">
+
+    <!--Header-->
+    <div class="modal-header light-blue darken-3 white-text">
+      <h4 class="title">
+        <i class="fa fa-user"></i> Register</h4>
+      <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+      </button>
+    </div>
+    <!--Body-->
+    <form class="modal-body" #loginForm="ngForm" (ngSubmit)="loginForm.valid && register(loginForm.value)" autocomplete="off">
+      <div class="md-form form-sm">
+        <i class="fa fa-user prefix "></i>
+        <input mdbActive type="text" class="form-control" id="name" ngModel name="name" #name="ngModel" required>
+        <label for="name">Your name</label>
+      </div>
+      <div class="md-form form-sm">
+        <i class="fa fa-envelope prefix"></i>
+        <input mdbActive type="email" class="form-control" id="e" ngModel name="email" #email="ngModel" pattern='^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
+          required>
+        <label for="e">Your email</label>
+      </div>
+      <div *ngIf="email.errors && (email.dirty || email.touched || loginForm.submitted)" class='px-4 font-red'>
+        <p *ngIf="email.errors.required">
+          The email is required
+        </p>
+        <p *ngIf="email.errors.pattern">Invalid email format.</p>
+      </div>
+      <div class="md-form form-sm">
+        <i class="fa fa-lock prefix"></i>
+        <input mdbActive type="password" class="form-control" id="p" ngModel name="password" #password="ngModel" required>
+        <label for="p">Your password</label>
+      </div>
+      <div *ngIf="password.errors && (password.dirty || password.touched || loginForm.submitted)" class='px-4 font-red'>
+        <p *ngIf="password.errors.required">
+          The password is required
+        </p>
+        <p *ngIf="password.errors.minlength">Password must be at least 6 characters long</p>
+      </div>
+      <div class="text-right mt-2">
+        <input type="submit" class="btn btn-primary waves-effect waves-light" value="submit" />
+      </div>
+    </form>
+    <!--Footer-->
+  </div>
+  <!--/.Content-->
+</div>
